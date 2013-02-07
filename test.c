@@ -61,19 +61,10 @@ int main(void) {
 	//TACTL 	// Timer_A control 
 	//TAIV 		// Timer_A interrupt vector 
 	
-	//	~ADC~
-	
-	ADC10CTL0 = ADC10SHT_3 + ADC10ON; 		// sample and hold time  max
-	ADC10CTL1 = ADC10DIV0 + ADC10DIV1 + ADC10DIV2 + //
-		INCH0 + INCH1+ INCH2+ INCH3; 		//
-	ADC10AE0 |= 0x08; // ? analog enable bit 
-	
 	// loop forever
 	for (;;) 
 	{
 		P1OUT ^= 0x41;
-		
-		voltage= ADC10MEM; // reads value
 
 		//wait
 		for (i = 0; i < max; i++); 
@@ -104,7 +95,5 @@ interrupt (PORT1_VECTOR) PORT1_ISR(void)
 void func(void) {
 
 }
-
-
 
 
