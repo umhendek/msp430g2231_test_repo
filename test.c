@@ -25,19 +25,15 @@
 void func(void);
 
 int main(void) {
-	volatile long int i;
-	unsigned int max = maxLEDFreq;
-	_Bool flag = 0;
-	double voltage;
 
 	// stop watchdog timer
 	WDTCTL = WDTPW | WDTHOLD;
 	
-	P1SEL = 0x00; // ? pin setting select
-	P1REN = 0x00; // ? pin resistor enable (PU or PD)
+	P1SEL = 0x00; 	// ? pin setting select
+	P1REN = 0x00; 	// ? pin resistor enable (PU or PD)
 
-	P1DIR = 0x41;
-	P1OUT = 0x40;
+	P1DIR = 0x41; 	// direction selection
+	P1OUT = 0x40; 	// output selection
 	
 	P1IE = 0x00;	// interrupt enable
 	P1IES = 0x00; 	// transition slope
