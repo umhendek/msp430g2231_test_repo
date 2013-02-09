@@ -13,10 +13,10 @@
 //
 // pragma vector=PORT1_VECTOR
 // __interrupt void PORT1_ISR(void) { .. } // interrupt routine setup
-// 	**** end TI ****
+// 	**** end TI way ****
 
 //	**** the GCC way ... ****
-#include <msp430.h>
+#include <msp430.h> // device defined at compiletime
 #include <legacymsp430.h>
 
 #define maxLEDFreq 2500 
@@ -33,8 +33,6 @@ int main(void) {
 	// stop watchdog timer
 	WDTCTL = WDTPW | WDTHOLD;
   
-  	//BCSCTL1 = CALBC1_1MHZ;		// Set range
-	//DCOCTL = CALDCO_1MHZ;		// SMCLK = DCO = 1MHz 
 	
 	P1SEL = 0x00; // ? pin setting select
 	P1REN = 0x00; // ? pin resistor enable (PU or PD)
@@ -52,15 +50,6 @@ int main(void) {
 	BIS_SR(GIE); */
 	eint();
 		
-	//	~Timer A~
-	//TACCR1 	// Capture/compare register
-	//TACCR0 	// Capture/compare register 
-	//TAR 		// Timer_A register 
-	//TACCTL1 	// Capture/compare control 
-	//TACCTL0 	// Capture/compare control 
-	//TACTL 	// Timer_A control 
-	//TAIV 		// Timer_A interrupt vector 
-	
 	// loop forever
 	for (;;) 
 	{
@@ -83,17 +72,16 @@ int main(void) {
 			max = max -5;
 	}
 	
-	// never gets here
-	
 }
 
+// interrupt template
 interrupt (PORT1_VECTOR) PORT1_ISR(void) 
 {
 
 }
 
+// function template
 void func(void) {
 
 }
-
 

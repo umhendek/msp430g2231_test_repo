@@ -1,1 +1,9 @@
-hello world :)
+currently used to test my g2231 
+
+Procedure:
+
+$ sh make.sh
+$ sudo mspdebug rf2500
+> erase
+> load test.elf
+> run
