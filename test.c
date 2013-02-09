@@ -8,18 +8,17 @@
 \	Date: 12-28-12
 */
 
-//	**** the TI way ****
-// #import <msp430g2231.h> // must import specific device header
-//
-// pragma vector=PORT1_VECTOR
-// __interrupt void PORT1_ISR(void) { .. } // interrupt routine setup
-// 	**** end TI way ****
+/*	**** the TI way ****
 
-//	**** the GCC way ... ****
+#import <msp430g2231.h> // must import specific device header
+pragma vector=PORT1_VECTOR
+__interrupt void PORT1_ISR(void) { .. } // interrupt routine setup
+
+ 	**** end TI way **** */
+
+//	**** the GCC way ****
 #include <msp430.h> // device defined at compiletime
 #include <legacymsp430.h>
-
-#define maxLEDFreq 2500 
 
 // Function defs
 void func(void);
