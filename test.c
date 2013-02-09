@@ -32,7 +32,6 @@ int main(void) {
 
 	// stop watchdog timer
 	WDTCTL = WDTPW | WDTHOLD;
-  
 	
 	P1SEL = 0x00; // ? pin setting select
 	P1REN = 0x00; // ? pin resistor enable (PU or PD)
@@ -44,32 +43,13 @@ int main(void) {
 	P1IES = 0x00; 	// transition slope
 	//P1IFG 	// interrupt flag
   
-	/* enable global interrupts * 
-	gie();
-	WRITE_SR(GIE);
-	BIS_SR(GIE); */
+	// enable global interrupts 
 	eint();
 		
 	// loop forever
 	for (;;) 
 	{
 		P1OUT ^= 0x41;
-
-		//wait
-		for (i = 0; i < max; i++); 
-		{
-		    
-		}
-	    
-		if (max == maxLEDFreq)
-			flag =0;
-		else if (max == 0)
-			flag =1;
-	  	
-		if (flag==1)
-			max = max+5;
-		else
-			max = max -5;
 	}
 	
 }
